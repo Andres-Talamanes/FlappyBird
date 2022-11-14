@@ -4,7 +4,7 @@ void setup() {
    backpic =loadImage("img/back.png");
    birdpic =loadImage("img/bird.png");
    wallpic =loadImage("img/wall.png");
-   welcomescreen=loadImage("img/start.png");
+   welcomescreen=loadImage("img/start.jpg");
    game = 1; score = 0; highscore = 0; x = -200; vertical = 0; 
   size(600,800);
   fill(250,0,0);
@@ -27,7 +27,7 @@ void draw() {
       if(wallx[i] < 0) {
         wally[i] = (int)random(200,height-200);
         wallx[i] = width;
-      }
+      }  
       if(wallx[i] == width/2) highscore = max(++score, highscore);
       if(y>height||y<0||(abs(width/2-wallx[i])<25 && abs(y-wally[i])>100)) game=1;
       wallx[i] -= 6;
@@ -40,13 +40,15 @@ void draw() {
     imageMode(CENTER);
     image(welcomescreen, width/2,height/2);
     fill(5,5,5);
-    text("Mejor Puntuacion: "+highscore, 50, 130);
-    text("Elaborado por Andrés Manuel Hernández Talamantes", 50, 100);
+    text("Mejor Puntuacion: "+highscore, 50, 20);
+    text("Elaborado por Andrés Manuel Hernández Talamantes", 50, 50);
+    text("Para hacer brincar el pajaro hacer click izquierdo", 50, 80);
+    text("Y para volver a empezar dar click izquierdo",50,100);
   }
 }
 /*Accion del mouse para pode interactuar dentro del juego*/
 void mousePressed() {
-  vertical = -15;
+  vertical = -10;
   if(game==1) {
     wallx[0] = 600;
     wally[0] = y = height/2;
